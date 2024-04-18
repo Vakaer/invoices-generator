@@ -1,0 +1,177 @@
+@import '../form/invoiceGlobal.scss';
+@import '../mediaQueries';
+
+// rotate form actions menu icon
+.rotate-180 {
+    transform: rotate(180deg);
+}
+
+.rotate-360 {
+    transform: rotate(360deg);
+}
+
+.w-40 {
+    width: 40px;
+}
+
+.h-40 {
+    height: 40px;
+}
+
+// input style for form 
+// on hover border primary
+.item-field {
+    border: 1px solid $dimgray-color;
+    padding: 0.5rem;
+    border-radius: 4px;
+    background-color: transparent !important;
+
+    &:focus {
+        border: 1px solid $primary-color;
+        outline: none;
+    }
+}
+
+
+.invoice-form {
+    .generic-input {
+        padding: 20px;
+        outline: none;
+        border: 2px solid transparent;
+        border-radius: 4px;
+    }
+
+    .sender-info,
+    .recipient-info {
+        border: 2px solid transparent;
+    }
+
+    &:hover {
+
+        .sender-info,
+        .recipient-info {
+            border: 2px dashed $dimgray-color;
+
+            &:hover {
+                border: 2px solid $primary-color;
+            }
+        }
+
+        .generic-input {
+            border: 2px dashed $dimgray-color;
+
+            &:hover {
+                border: 2px solid $primary-color;
+            }
+        }
+
+    }
+
+
+    .table-secondary {
+        background-color: $lightgray-color !important;
+
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        @include respond-below(md) {
+            thead {
+                border: none;
+            }
+
+            .invoice-item {
+                border-color: $dimgray-color;
+                border-width: 0px 1px 1px 1px;
+                /* 0px top, 1px right, 1px bottom and 1px left */
+                border-style: none solid solid;
+                /* top-left | top-right | bottom-right | bottom-left */
+                // border-radius: 0px 0 15px 15px;
+            }
+
+            tr {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: start;
+                border-bottom: none;
+            }
+
+            th {
+                margin: 0;
+                padding: 0;
+                text-align: start;
+            }
+
+            td {
+                width: 100%;
+                text-align: start;
+            }
+
+
+
+        }
+    }
+
+
+
+    .invoice-summary {
+        .summary-heading {
+            background-color: $lightgray-color;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+        }
+    }
+
+    .currency-dropdown {
+        .selected-currency {
+            border: 1px solid $dimgray-color;
+            padding: 4px;
+        }
+
+
+
+    }
+
+
+    tbody,
+    td,
+    tfoot,
+    th,
+    thead,
+    tr {
+        border-style: none;
+    }
+
+    p {
+        padding: 0px;
+        margin: 0;
+    }
+
+    /* remove counter arrows from number input /*
+    /* hide arrows
+    Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        margin: 0 !important;
+    }
+
+    /* Firefox */
+    input[type=number] {
+        -moz-appearance: textfield !important;
+    }
+}
+
+.toggle-actions-btn {
+    display: none;
+
+    @include respond-below(lg) {
+        display: block;
+    }
+}

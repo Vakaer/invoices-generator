@@ -1,0 +1,14 @@
+$dimgray-color: #b9b9b9;
+$primary-color: #1e79f2;
+$lightgray-color: #dee2e6;
+@import '../mediaQueries';
+
+
+.gap-4em {
+    gap: 0rem;
+
+    @include respond-below(md) {
+        gap: 4rem;
+    }
+}
+

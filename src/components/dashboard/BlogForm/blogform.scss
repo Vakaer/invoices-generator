@@ -1,0 +1,12 @@
+@import "../../../app/dashboard/invoicedashboard/dashboard.scss";
+
+.add-blog-form{
+	.insert-media-form{
+		border: 1px solid $grayshade-color;
+		min-height: 70px;
+		.insert-media-text{
+			padding: 5px;
+			cursor: pointer;
+		}
+	}
+}

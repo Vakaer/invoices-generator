@@ -1,0 +1,98 @@
+@import '../globalDashboard.scss';
+
+
+.navs-shadow {
+	background-color: white;
+	border-radius: 2px;
+	box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.12), 0 2px 3px 0 rgba(0, 0, 0, 0.22);
+}
+
+
+
+.sidenavbar {
+
+	.item-list {
+		.hover-effect:hover {
+			color: $black-color !important;
+		}
+	}
+
+	.side-item {
+		@media (max-width: $mobile-screen) {
+			padding-left: 0rem !important;
+		}
+	}
+
+	.active-color {
+		color: $blueviolet-color !important;
+	}
+
+	.accordion {
+		margin: 0rem auto;
+
+
+		.accordion-item {
+			&:first-child {
+				.accordion-header {
+					.accordion-button {
+						display: flex !important;
+						gap: 1rem !important;
+					}
+
+					.accordion-button.collapsed::after {
+						background-image: none !important;
+					}
+				}
+			}
+
+			border: 0px !important;
+			background-color: transparent !important;
+			border-radius: 0px !important;
+
+			.accordion-header {
+				.accordion-button.collapsed::after {
+					background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000000'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+				}
+
+				.accordion-button {
+					color: $black-color !important;
+					display: flex !important;
+					gap: 1rem;
+					border-left: 3px solid transparent !important;
+					background-color: transparent !important;
+
+					&:hover {
+						border-left: 3px solid $blueviolet-color !important;
+						background-color: #e9e3ff !important;
+						color: $darkpurple-color !important;
+					}
+				}
+
+				.accordion-button:not(.collapsed) {
+					border-left: 3px solid $blueviolet-color !important;
+					background-color: #e9e3ff !important;
+					color: $darkpurple-color !important;
+
+					.accordion-button:not(.collapsed)::after {
+						background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%236A0DAD'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>") !important;
+					}
+				}
+			}
+
+			.accordion-body {
+				.active-color {
+					color: $darkpurple-color !important;
+					font-weight: bold;
+					border-left: 2px solid $darkpurple-color !important;
+				}
+
+				ul li a {
+					color: black !important;
+					border-left: 2px solid gray;
+					border-radius: 0px !important;
+					padding-left: 1rem !important;
+				}
+			}
+		}
+	}
+}

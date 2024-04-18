@@ -1,0 +1,93 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  MODERATOR
+  ADMIN
+}
+
+model User {
+  id                  String                 @id @default(uuid())
+  name                String                 @unique
+  email               String                 @unique
+  password            String
+  isActive            Boolean                @default(false)
+  role                Role                   @default(MODERATOR)
+
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}
+
+model Language {
+  id                  String                 @id @default(uuid())
+  name                String                 @unique
+  short               String                 @unique
+  blogs               Blog[]
+  tools               Tool[]
+
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}
+
+model Blog {
+  id                  String                 @id @default(uuid())
+  title               String                 
+  excerpts            String? 
+  metaTitle           String                 @db.VarChar(60)
+  metaDescription     String                 @db.VarChar(160)
+  slug                String                 @unique
+  ogTags              String? 
+  tcTags              String? 
+  schemaTags          String?  
+  isIndex             Boolean?               @default(false)
+  content             String?
+  imageUrl            String 
+  readingTime         Int?                   @default(5)
+  isPublished         Boolean?               @default(false)
+
+  parentId            String?
+  language            Language               @relation(fields: [langaugeId], references: [id])
+  langaugeId          String
+
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}
+
+model Tool {
+  id                  String                 @id @default(uuid())
+  name                String                 
+  metaTitle           String                 @db.VarChar(60)
+  metaDescription     String                 @db.VarChar(160)
+  slug                String                 @unique
+  ogTags              String? 
+  tcTags              String? 
+  schemaTags          String?  
+  isIndex             Boolean?               @default(false)
+  isPublished         Boolean?               @default(false)
+  isItHome            Boolean?               @default(false)
+  content             Json?                  @db.Json
+
+  parentId            String?
+  language            Language               @relation(fields: [langaugeId], references: [id])
+  langaugeId          String
+
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}
+
+
+model Image {
+  id                  String                 @id @default(uuid())
+  name                String                 @unique
+  url                 String                 @unique
+  isTrashed           Boolean                @default(false)
+
+  createdAt           DateTime               @default(now())
+  updatedAt           DateTime               @updatedAt
+}

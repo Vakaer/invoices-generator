@@ -1,0 +1,112 @@
+{
+    "extends": [
+      "next/core-web-vitals",
+      "plugin:@typescript-eslint/recommended",
+      "prettier"
+    ],
+    "rules": {
+      // Disables the requirement to provide a 'displayName' property for React components.
+      "react/display-name": "off",
+  
+      // Disables a specific Next.js rule that prevents using '<img>' elements in Next.js.
+      "@next/next/no-img-element": "off",
+  
+      // Disables the rule that disallows unescaped HTML entities in React components.
+      "react/no-unescaped-entities": "off",
+  
+      // Disables the rule that prevents anonymous default exports.
+      "import/no-anonymous-default-export": "off",
+  
+      // Enforces reporting unused TypeScript variables as errors.
+      "@typescript-eslint/no-unused-vars": "off",
+  
+      // Disables the rule that prohibits certain TypeScript comments.
+      "@typescript-eslint/ban-ts-comment": "off",
+  
+      // Disables the rule that prevents the use of 'any' type explicitly.
+      "@typescript-eslint/no-explicit-any": "off",
+  
+      // Disables the rule that prevents non-null assertions.
+      "@typescript-eslint/no-non-null-assertion": "off",
+  
+      // Specifies rules for adding newlines around comments.
+      "lines-around-comment": [
+        "error",
+        {
+          "beforeLineComment": true,
+          "beforeBlockComment": true,
+          "allowBlockStart": true,
+          "allowClassStart": true,
+          "allowObjectStart": true,
+          "allowArrayStart": true
+        }          
+      ],
+      // "simple-import-sort/imports": [
+      //   "error",
+      //   {
+      //     "groups": [
+      //       // Packages `react` related packages come first.
+      //       ["^react", "^@?\\w"],
+      //       // Internal packages.
+      //       ["^(@|components)(/.*|$)"],
+      //       // Side effect imports.
+      //       ["^\\u0000"],
+      //       // Parent imports. Put `..` last.
+      //       ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+      //       // Other relative imports. Put same-folder imports and `.` last.
+      //       ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+      //       // Style imports.
+      //       ["^.+\\.?(css)$"]
+      //     ]
+      //   }
+      // ] ,
+  
+      // Enforces adding a newline before a 'return' statement.
+      "newline-before-return": "error",
+  
+      // Enforces adding a newline after import statements.
+      "import/newline-after-import": [
+        "error",
+        {
+          "count": 1
+        }
+      ],
+  
+      // Enforces banning certain TypeScript types with specified configurations.
+      "@typescript-eslint/ban-types": [
+        "error",
+        {
+          "extendDefaults": true,
+          "types": {
+            "{}": false
+          }
+        }
+      ]
+    },
+    "plugins": ["import"],
+    "settings": {
+      // Specifies the TypeScript parser for ESLint.
+      "import/parsers": {
+        "@typescript-eslint/parser": [".ts", ".tsx"]
+      },
+  
+      // Configures the TypeScript import resolver, including the location of the 'tsconfig.json' file.
+      "import/resolver": {
+        "typescript": {
+          "alwaysTryTypes": true,
+          "project": ["./tsconfig.json"]
+        }
+      }
+    },
+    "overrides": [
+      {
+        // Specific rules for files in the "src/iconify-bundle" directory.
+        "files": ["src/iconify-bundle/*"],
+        "rules": {
+          // Disables the rule that prohibits the use of 'require' statements.
+          // "@typescript-eslint/no-var-requires": "off"
+        }
+      }
+    ]
+  }
+  
