@@ -78,9 +78,10 @@ const page = async ({ params: { slug } }: { params: { slug: string } }) => {
 
 	return (
 		<>
-		{schemaTagsParse && schemaTagsParse.map((value:any) => {
+		{schemaTagsParse && schemaTagsParse.map((value: any, index: number) => {
 			return(	
 				<script
+					key={index}
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(value) }}
 				/>

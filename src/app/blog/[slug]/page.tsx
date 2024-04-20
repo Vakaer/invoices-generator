@@ -74,11 +74,13 @@ const page = async ({ params: { slug } }: { params: { slug: string } }) => {
 	const blog:any = await getDataApiCall(`http://localhost:3000/api/blog/slug?slug=${slug}`);
 	const { content, schemaTags } = blog.blog;
 	const schemaTagsParse = await JSON.parse(schemaTags);
+
 	return (
 		<>
-		{schemaTagsParse && schemaTagsParse.map((value:any) => {
+		{schemaTagsParse && schemaTagsParse.map((value: any, index: number) => {
 			return(	
 				<script
+					key={index}
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{ __html: JSON.stringify(value) }}
 				/>
